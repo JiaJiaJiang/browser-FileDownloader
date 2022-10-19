@@ -1,0 +1,16 @@
+{
+	"presets": [
+	  [
+		"@babel/preset-env",
+		{
+			"targets":{
+				"browsers":"cover 85%"
+			},
+			"modules": false,
+			"useBuiltIns": "usage",
+			"debug": false,
+			"corejs":3
+		}
+	  ]
+	]
+}

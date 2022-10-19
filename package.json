@@ -1,0 +1,34 @@
+{
+  "name": "browser-filedownloader",
+  "version": "0.0.1",
+  "description": "file downloader for browser",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JiaJiaJiang/browser-FileDownloader.git"
+  },
+  "keywords": [
+    "file",
+    "javascript",
+    "download"
+  ],
+  "type": "module",
+  "author": "luojia@luojia.me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JiaJiaJiang/browser-FileDownloader/issues"
+  },
+  "homepage": "https://github.com/JiaJiaJiang/browser-FileDownloader#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "core-js": "^3.25.5",
+    "rollup": "^3.1.0"
+  }
+}
