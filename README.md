@@ -6,7 +6,7 @@ File downloader for browser
 
 This downloader will try resume the progress at the breakpoint if available.
 
-Note: This downloader uses `fetch()` to fetch content, resources from other domains must have correct CROS headers.
+Note: This downloader uses `fetch()` to fetch content, resources from other domains must have correct CORS headers.
 
 ## Get
 
