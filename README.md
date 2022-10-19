@@ -55,11 +55,11 @@ const downloader=new FileDownloader(url,{
 	load(blob,objectURL){
 		//you don't need to set this function if autoSave is true
 
-		//here is what auto save does
+		//here is what autoSave does
 		let a = document.createElement('a');
-			a.href=objectURL;
-			a.download = encodeURIComponent(this.opts.filename);
-			a.click();
+		a.href=objectURL;
+		a.download = encodeURIComponent(this.opts.filename);
+		a.click();
 	},
 
 	//a function for download error
