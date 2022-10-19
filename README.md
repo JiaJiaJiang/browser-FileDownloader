@@ -17,32 +17,33 @@ Just load `FileDownloader.js` by script tag and the `FileDownloader` is the clas
 ### 2. Install from npm
 
 ```shell
-npm i browser-filedownloader
+npm i @luojia/browser-filedownloader
 ```
 Then in your javascript code:
 
 ```javascript
-import FileDownloader from 'browser-filedownloader'
+import FileDownloader from '@luojia/browser-filedownloader'
 ```
 
 ## Usage
 
 ```javascript
 const downloader=new FileDownloader(url,{
-	//should it start downloading after the instance created
+	//should it start downloading after the instance created.
 	autoStart:true,
 
 	autoRetry:10,//retry times
 
-	//if you don't want to process the result, set this to true and the result will be saved to you device
+	//if you don't want to process the result, set this to true and the result will be saved to you device.
 	autoSave:false,
 
-	//when autoSavem is true, you can set the filename here
+	//when autoSavem is true, you can set the filename here.
+	//the file extension is not required, the browser will add it automatically based on file mime type.
 	fileName:`name`,
 
 	fetchOptions:{},//options for fetch()
 
-	//retry if stream stucked. If there is no byte received in 1s, it is treated as stucked
+	//retry if stream stucked. If there is no byte received in 1 second, it is treated as stucked.
 	retryWhenStuck:true,
 
 	//a function for progress events
