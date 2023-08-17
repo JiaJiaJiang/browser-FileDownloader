@@ -35,6 +35,7 @@
       _defineProperty(this, "loadedBytes", 0);
       _defineProperty(this, "totalBytes", null);
       _defineProperty(this, "etag", void 0);
+      _defineProperty(this, "blob", void 0);
       _defineProperty(this, "contentType", void 0);
       _defineProperty(this, "lastModified", void 0);
       _defineProperty(this, "_stuckChecker", void 0);
@@ -152,7 +153,7 @@
       } finally {
         clearTimeout(this._stuckChecker);
       }
-      let blob = new Blob(this.buffer, {
+      let blob = this.blob = new Blob(this.buffer, {
         type: this.contentType
       });
       this.onLoad(blob, this.objectURL = URL.createObjectURL(blob));
@@ -168,12 +169,13 @@
       this.aborter.abort();
     }
     close() {
+      var _this$blob;
       if (this.closed) return;
       this.closed = true;
       this._clearBuffer();
       clearTimeout(this._stuckChecker);
       this.abort();
-      if (blob.close) blob.close();
+      if ((_this$blob = this.blob) !== null && _this$blob !== void 0 && _this$blob.close) this.blob.close();
       if (this.objectURL) {
         URL.revokeObjectURL(this.objectURL);
         this.objectURL = null;

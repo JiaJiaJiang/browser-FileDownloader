@@ -10,6 +10,7 @@ class FileDownloader{
 	loadedBytes=0;
 	totalBytes=null;
 	etag;
+	blob;
 	contentType;
 	lastModified;
 	_stuckChecker;
@@ -121,7 +122,7 @@ class FileDownloader{
 			clearTimeout(this._stuckChecker);
 		}
 		
-		let blob=new Blob(this.buffer,{type:this.contentType});
+		let blob=this.blob=new Blob(this.buffer,{type:this.contentType});
 		this.onLoad(blob,this.objectURL=URL.createObjectURL(blob));
 		if(this.opts.autoSave){//save the file
 			let a = document.createElement('a');
@@ -139,7 +140,7 @@ class FileDownloader{
 		this._clearBuffer();
 		clearTimeout(this._stuckChecker);
 		this.abort();
-		if(blob.close)blob.close();
+		if(this.blob?.close)this.blob.close();
 		if(this.objectURL){
 			URL.revokeObjectURL(this.objectURL);
 			this.objectURL=null;
