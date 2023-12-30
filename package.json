@@ -1,6 +1,6 @@
 {
   "name": "@luojia/browser-filedownloader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "file downloader for browser",
   "main": "src/index.js",
   "scripts": {
