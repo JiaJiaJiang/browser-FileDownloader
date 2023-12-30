@@ -72,7 +72,7 @@ class FileDownloader{
 					headers.append(header[0],header[1]);
 				}
 			}
-			this._continueChecker(headers);
+			// this._continueChecker(headers);
 			let res;
 			try{
 				res=await fetch(this.source,Object.assign({},this.opts.fetchOptions||{},{headers,signal:this.aborter.signal}));
@@ -146,7 +146,7 @@ class FileDownloader{
 			this.objectURL=null;
 		}
 	}
-	_continueChecker(headers){
+	/* _continueChecker(headers){
 		if(!this.supportRange)return;
 		let ifRange=this.lastModified||this.etag;
 		console.debug('ifRange',ifRange);
@@ -154,7 +154,7 @@ class FileDownloader{
 		headers.set('if-range',ifRange);
 		headers.set('range',`bytes=${this.loadedBytes}-`);
 		console.debug('request header:',[...headers.entries()]);
-	}
+	} */
 	_setMetaInfo(res){
 		console.debug('response header:',[...res.headers.entries()]);
 		let headers=res.headers;
@@ -166,7 +166,7 @@ class FileDownloader{
 			}
 		}
 		//range
-		this.supportRange=!!headers.get('content-length');
+		this.supportRange=!!headers.get('accept-ranges');
 		if(res.status!==206){
 			console.debug('start from head');
 			this._clearBuffer();
