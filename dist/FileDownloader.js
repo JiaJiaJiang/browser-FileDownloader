@@ -81,7 +81,7 @@
 	          headers.append(header[0], header[1]);
 	        }
 	      }
-	      // this._continueChecker(headers);
+	      this._continueChecker(headers);
 	      let res;
 	      try {
 	        res = await fetch(this.source, Object.assign({}, this.opts.fetchOptions || {}, {
@@ -164,15 +164,15 @@
 	      this.objectURL = null;
 	    }
 	  }
-	  /* _continueChecker(headers){
-	  	if(!this.supportRange)return;
-	  	let ifRange=this.lastModified||this.etag;
-	  	console.debug('ifRange',ifRange);
-	  	if(!ifRange)return;
-	  	headers.set('if-range',ifRange);
-	  	headers.set('range',`bytes=${this.loadedBytes}-`);
-	  	console.debug('request header:',[...headers.entries()]);
-	  } */
+	  _continueChecker(headers) {
+	    if (!this.supportRange) return;
+	    let ifRange = this.lastModified || this.etag;
+	    console.debug('ifRange', ifRange);
+	    if (!ifRange) return;
+	    headers.set('if-range', ifRange);
+	    headers.set('range', `bytes=${this.loadedBytes}-`);
+	    console.debug('request header:', [...headers.entries()]);
+	  }
 	  _setMetaInfo(res) {
 	    console.debug('response header:', [...res.headers.entries()]);
 	    let headers = res.headers;
@@ -184,7 +184,7 @@
 	      }
 	    }
 	    //range
-	    this.supportRange = !!headers.get('accept-ranges');
+	    this.supportRange = !!headers.get('content-length'); //cannot get accept-ranges here, so use content-length instead
 	    if (res.status !== 206) {
 	      console.debug('start from head');
 	      this._clearBuffer();
